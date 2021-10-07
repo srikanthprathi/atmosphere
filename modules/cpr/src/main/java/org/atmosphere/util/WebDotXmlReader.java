@@ -27,6 +27,7 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.XMLConstants;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class WebDotXmlReader {
      */
     public WebDotXmlReader(InputStream stream) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         try {
             parse(factory.newDocumentBuilder().parse(stream));
         } catch (SAXException e) {
